@@ -1,10 +1,3 @@
-<!-- =========================
-     index.html (NY) – anpassad till dina filnamn i repo-root
-     Filerna måste ligga i samma mapp som index.html:
-     Bedömningsnivåer.png, Resurser.png, Tillfälle.png, antagonist.kapacitet.png,
-     antagonistisklivscykel.png, facilitering.png, intentioner.png, kapacitet.png,
-     scenarioplanering.png, app.js, style.css
-========================= -->
 <!doctype html>
 <html lang="sv">
 <head>
@@ -16,343 +9,313 @@
 </head>
 
 <body>
-  <a class="skip-link" href="#main">Hoppa till innehåll</a>
-
   <header class="topbar">
     <div class="container topbar__inner">
       <div class="brand">
         <div class="brand__title">Undervisningsmaterial</div>
-        <div class="brand__subtitle">Kapacitet • Intentioner • Facilitering • Resurser • Tillfälle</div>
+        <div class="brand__subtitle">Moduler för genomgång • klicka, zooma, helskärm</div>
       </div>
 
       <div class="topbar__actions">
-        <button id="btnExpandAll" class="btn" type="button" title="Öppna alla avsnitt">Öppna alla</button>
-        <button id="btnCollapseAll" class="btn btn--ghost" type="button" title="Stäng alla avsnitt">Stäng alla</button>
+        <input id="filter" class="search" type="search" placeholder="Filtrera moduler… (t.ex. intentioner)" />
+        <button id="btnResetAll" class="btn btn--ghost" type="button" title="Återställ alla zoomar">Återställ</button>
       </div>
     </div>
   </header>
 
-  <main id="main" class="container">
+  <main class="container">
     <section class="hero">
-      <div class="hero__text">
-        <h1>Så bedömer du antagonistisk kapacitet</h1>
-        <p>
-          Klicka på en bild för att öppna visaren. Zooma med scroll, panorera genom att dra,
-          slå på helskärm och använd ESC för att stänga.
-        </p>
+      <h1>Antagonistisk kapacitet</h1>
+      <p>
+        Varje modul har en lika stor bildyta. Zooma direkt i modulen (±/100%), eller öppna i visare för större vy.
+        Dubbelklick på bilden växlar 100% ↔ 200%.
+      </p>
 
-        <div class="chips">
-          <a class="chip" href="#kapacitet">Kapacitet</a>
-          <a class="chip" href="#oversikt">Översikt</a>
-          <a class="chip" href="#bedomning">Bedömningsnivåer</a>
-          <a class="chip" href="#intentioner">Intentioner</a>
-          <a class="chip" href="#facilitering">Facilitering</a>
-          <a class="chip" href="#resurser">Resurser</a>
-          <a class="chip" href="#tillfalle">Tillfälle</a>
-          <a class="chip" href="#scenarier">Scenarier</a>
-          <a class="chip" href="#livscykel">Livscykel</a>
-        </div>
+      <div class="tags" id="tagBar">
+        <button class="tag is-active" data-tag="alla">Alla</button>
+        <button class="tag" data-tag="modell">Modell</button>
+        <button class="tag" data-tag="metod">Metod</button>
+        <button class="tag" data-tag="dimension">Dimensioner</button>
+        <button class="tag" data-tag="scenarier">Scenarier</button>
+        <button class="tag" data-tag="livscykel">Livscykel</button>
       </div>
     </section>
 
-    <!-- 1) Kapacitet -->
-    <section id="kapacitet" class="section">
-      <details class="panel" open>
-        <summary class="panel__summary">
-          <span class="panel__title">1) Kapacitet – summan av fyra dimensioner</span>
-          <span class="panel__meta">Fäll ut/in</span>
-        </summary>
-
-        <div class="panel__content">
-          <p class="note">
-            Kapacitet är ett samlat mått av <b>intentioner</b>, <b>facilitering</b>, <b>resurser</b> och <b>tillfälle</b>.
-            Totalen kräver en sammanvägd bedömning.
-          </p>
-
-          <div class="grid grid--1">
-            <figure class="card">
-              <img
-                src="kapacitet.png"
-                alt="Kapacitet är summan av fyra dimensioner: intentioner, facilitering, resurser, tillfälle."
-                data-lightbox
-              />
-              <figcaption>Kapacitet = Intentioner + Facilitering + Resurser + Tillfälle</figcaption>
-            </figure>
+    <section class="grid" id="modules">
+      <!-- 1 -->
+      <article class="module" data-tags="modell dimension">
+        <header class="module__head">
+          <div>
+            <div class="module__kicker">1) Modell</div>
+            <h2 class="module__title">Kapacitet = fyra dimensioner</h2>
           </div>
+          <div class="module__pill">Översikt</div>
+        </header>
+
+        <div class="frame">
+          <img src="kapacitet.png" alt="Kapacitet är summan av fyra dimensioner." data-img />
         </div>
-      </details>
-    </section>
 
-    <!-- 2) Översikt -->
-    <section id="oversikt" class="section">
-      <details class="panel" open>
-        <summary class="panel__summary">
-          <span class="panel__title">2) Översikt – dimensioner, process och samlat utfall</span>
-          <span class="panel__meta">Fäll ut/in</span>
-        </summary>
-
-        <div class="panel__content">
-          <p class="note">
-            Arbeta i tre steg: identifiera & gradera fenomen, beräkna kapacitetsvärden och sammanställ bästa/troligast/värsta.
-          </p>
-
-          <div class="grid grid--1">
-            <figure class="card">
-              <img
-                src="antagonist.kapacitet.png"
-                alt="Så bedömer du en antagonists kapacitet: fyra dimensioner, tre steg och ett samlat utfall."
-                data-lightbox
-              />
-              <figcaption>Översikt: fyra dimensioner → tre steg → samlat utfall</figcaption>
-            </figure>
-          </div>
-
-          <div class="grid grid--2">
-            <div class="textblock">
-              <h3>Tre steg</h3>
-              <ol class="steps">
-                <li><b>Identifiera & gradera</b> fenomen per dimension.</li>
-                <li><b>Beräkna</b> kapacitetsvärden.</li>
-                <li><b>Sammanställ</b> scenarier och total.</li>
-              </ol>
-            </div>
-            <div class="textblock">
-              <h3>Princip</h3>
-              <ul>
-                <li>Spårbarhet via fenomen.</li>
-                <li>Osäkerhet ska synas.</li>
-                <li>Håll isär vilja och förmåga.</li>
-              </ul>
-            </div>
-          </div>
+        <div class="controls">
+          <button class="iconbtn" data-zoom="out" title="Zooma ut">−</button>
+          <button class="iconbtn" data-zoom="reset" title="Återställ zoom">100%</button>
+          <button class="iconbtn" data-zoom="in" title="Zooma in">+</button>
+          <button class="iconbtn" data-fit title="Passa i ruta">Passa</button>
+          <button class="btn" data-open title="Öppna i visare">Öppna</button>
         </div>
-      </details>
-    </section>
 
-    <!-- 3) Bedömningsnivåer -->
-    <section id="bedomning" class="section">
-      <details class="panel">
-        <summary class="panel__summary">
-          <span class="panel__title">3) Bedömningsnivåer – visualisering av osäkerhet</span>
-          <span class="panel__meta">Fäll ut/in</span>
-        </summary>
+        <p class="module__desc">
+          Snabb sammanfattning av modellen. Använd som startslide innan ni går ner i dimensionerna.
+        </p>
+      </article>
 
-        <div class="panel__content">
-          <p class="note">
-            Fenomen färgkodas för att signalera underrättelselägets säkerhet (tveksamt → bekräftat).
-          </p>
-
-          <div class="grid grid--1">
-            <figure class="card">
-              <img
-                src="Bedömningsnivåer.png"
-                alt="Arbetsgång: kartläggning av fenomen och visualisering av osäkerhetsfaktorer med bedömningsnivåer."
-                data-lightbox
-              />
-              <figcaption>Bedömningsnivåer och exempel på fenomenkort</figcaption>
-            </figure>
+      <!-- 2 -->
+      <article class="module" data-tags="metod modell">
+        <header class="module__head">
+          <div>
+            <div class="module__kicker">2) Metod</div>
+            <h2 class="module__title">Så bedömer du kapacitet</h2>
           </div>
+          <div class="module__pill">Process</div>
+        </header>
+
+        <div class="frame">
+          <img src="antagonist.kapacitet.png" alt="Översikt: dimensioner, tre steg och samlat utfall." data-img />
         </div>
-      </details>
-    </section>
 
-    <!-- 4) Intentioner -->
-    <section id="intentioner" class="section">
-      <details class="panel" open>
-        <summary class="panel__summary">
-          <span class="panel__title">4) Dimension 1 – Intentioner</span>
-          <span class="panel__meta">Fäll ut/in</span>
-        </summary>
-
-        <div class="panel__content">
-          <div class="callout">
-            <div class="callout__title">Definition</div>
-            <div class="callout__body">
-              Drivkrafter och mål som styr handlingen. Kan variera över tid beroende på ambition, press eller nya möjligheter.
-            </div>
-          </div>
-
-          <div class="grid grid--1">
-            <figure class="card">
-              <img
-                src="intentioner.png"
-                alt="Dimension 1: Intentioner – definition, skala 1-5 och exempel."
-                data-lightbox
-              />
-              <figcaption>Intentioner: definition, skala (1–5) och exempel</figcaption>
-            </figure>
-          </div>
+        <div class="controls">
+          <button class="iconbtn" data-zoom="out">−</button>
+          <button class="iconbtn" data-zoom="reset">100%</button>
+          <button class="iconbtn" data-zoom="in">+</button>
+          <button class="iconbtn" data-fit>Passa</button>
+          <button class="btn" data-open>Öppna</button>
         </div>
-      </details>
-    </section>
 
-    <!-- 5) Facilitering -->
-    <section id="facilitering" class="section">
-      <details class="panel">
-        <summary class="panel__summary">
-          <span class="panel__title">5) Dimension 2 – Facilitering</span>
-          <span class="panel__meta">Fäll ut/in</span>
-        </summary>
+        <p class="module__desc">
+          Praktisk struktur: identifiera/gradera fenomen → beräkna kapacitetsvärden → sammanställ scenarier.
+        </p>
+      </article>
 
-        <div class="panel__content">
-          <p class="note">
-            Facilitering är externa beroenden: möjliggörare, nätverk, plattformar, logistik och tredje part.
-          </p>
-
-          <div class="grid grid--1">
-            <figure class="card">
-              <img
-                src="facilitering.png"
-                alt="Dimension 2: Facilitering – definition, skala 1-5 och exempel."
-                data-lightbox
-              />
-              <figcaption>Facilitering: extern hjälp och beroenden</figcaption>
-            </figure>
+      <!-- 3 -->
+      <article class="module" data-tags="metod">
+        <header class="module__head">
+          <div>
+            <div class="module__kicker">3) Metod</div>
+            <h2 class="module__title">Bedömningsnivåer</h2>
           </div>
+          <div class="module__pill">Osäkerhet</div>
+        </header>
+
+        <div class="frame">
+          <img src="Bedömningsnivåer.png" alt="Bedömningsnivåer och visualisering av osäkerhet." data-img />
         </div>
-      </details>
-    </section>
 
-    <!-- 6) Resurser -->
-    <section id="resurser" class="section">
-      <details class="panel">
-        <summary class="panel__summary">
-          <span class="panel__title">6) Dimension 3 – Resurser</span>
-          <span class="panel__meta">Fäll ut/in</span>
-        </summary>
+        <div class="controls">
+          <button class="iconbtn" data-zoom="out">−</button>
+          <button class="iconbtn" data-zoom="reset">100%</button>
+          <button class="iconbtn" data-zoom="in">+</button>
+          <button class="iconbtn" data-fit>Passa</button>
+          <button class="btn" data-open>Öppna</button>
+        </div>
 
-        <div class="panel__content">
-          <p class="note">
-            Resurser är intern, kontrollerad förmåga: ekonomi, våldskapital, kompetens och social struktur.
-          </p>
+        <p class="module__desc">
+          Färgkodning för underrättelselägets säkerhet. Gör det lätt att separera antaganden från bekräftat.
+        </p>
+      </article>
 
-          <div class="grid grid--1">
-            <figure class="card">
-              <img
-                src="Resurser.png"
-                alt="Dimension 3: Resurser – ekonomi, våldskapital, kompetens och socialt."
-                data-lightbox
-              />
-              <figcaption>Resurser: den egna kontrollerade förmågan</figcaption>
-            </figure>
+      <!-- 4 -->
+      <article class="module" data-tags="dimension">
+        <header class="module__head">
+          <div>
+            <div class="module__kicker">4) Dimension 1</div>
+            <h2 class="module__title">Intentioner</h2>
           </div>
+          <div class="module__pill">Vilja</div>
+        </header>
+
+        <div class="frame">
+          <img src="intentioner.png" alt="Intentioner: definition, skala och exempel." data-img />
         </div>
-      </details>
-    </section>
 
-    <!-- 7) Tillfälle -->
-    <section id="tillfalle" class="section">
-      <details class="panel">
-        <summary class="panel__summary">
-          <span class="panel__title">7) Dimension 4 – Tillfälle (Tid & Rum)</span>
-          <span class="panel__meta">Fäll ut/in</span>
-        </summary>
+        <div class="controls">
+          <button class="iconbtn" data-zoom="out">−</button>
+          <button class="iconbtn" data-zoom="reset">100%</button>
+          <button class="iconbtn" data-zoom="in">+</button>
+          <button class="iconbtn" data-fit>Passa</button>
+          <button class="btn" data-open>Öppna</button>
+        </div>
 
-        <div class="panel__content">
-          <p class="note">
-            Tillfälle beskriver fönstret där sårbarhet och förmåga möts: tidpunkter, platser och miljöer där effekt kan uppnås med lägre risk.
-          </p>
+        <p class="module__desc">
+          Drivkrafter och mål som styr handling. Bedömning ska vara spårbar genom fenomen och mönster över tid.
+        </p>
+      </article>
 
-          <div class="grid grid--1">
-            <figure class="card">
-              <img
-                src="Tillfälle.png"
-                alt="Dimension 4: Tillfälle (Tid & Rum) – definition, skala 1-5 och faktorer."
-                data-lightbox
-              />
-              <figcaption>Tillfälle: konvergensen av sårbarhet och förmåga (tid & rum)</figcaption>
-            </figure>
+      <!-- 5 -->
+      <article class="module" data-tags="dimension">
+        <header class="module__head">
+          <div>
+            <div class="module__kicker">5) Dimension 2</div>
+            <h2 class="module__title">Facilitering</h2>
           </div>
+          <div class="module__pill">Externt</div>
+        </header>
+
+        <div class="frame">
+          <img src="facilitering.png" alt="Facilitering: externa beroenden och möjliggörare." data-img />
         </div>
-      </details>
-    </section>
 
-    <!-- 8) Scenarioplanering -->
-    <section id="scenarier" class="section">
-      <details class="panel" open>
-        <summary class="panel__summary">
-          <span class="panel__title">8) Scenarioplanering – Bästa, Troligast, Värsta</span>
-          <span class="panel__meta">Fäll ut/in</span>
-        </summary>
+        <div class="controls">
+          <button class="iconbtn" data-zoom="out">−</button>
+          <button class="iconbtn" data-zoom="reset">100%</button>
+          <button class="iconbtn" data-zoom="in">+</button>
+          <button class="iconbtn" data-fit>Passa</button>
+          <button class="btn" data-open>Öppna</button>
+        </div>
 
-        <div class="panel__content">
-          <p class="note">
-            Scenarier ger ett spann av möjliga utfall och stödjer planering, prioritering och riskaptit.
-          </p>
+        <p class="module__desc">
+          Externt stöd och beroenden. Att klippa faciliteringen kan tvinga strategiändring och minska kapacitet.
+        </p>
+      </article>
 
-          <div class="grid grid--1">
-            <figure class="card">
-              <img
-                src="scenarioplanering.png"
-                alt="Scenarioplanering: bästa, troligast, värsta och kapacitetsmått i procent."
-                data-lightbox
-              />
-              <figcaption>Scenarioplanering: procentspann per dimension och totalt</figcaption>
-            </figure>
+      <!-- 6 -->
+      <article class="module" data-tags="dimension">
+        <header class="module__head">
+          <div>
+            <div class="module__kicker">6) Dimension 3</div>
+            <h2 class="module__title">Resurser</h2>
           </div>
+          <div class="module__pill">Internt</div>
+        </header>
+
+        <div class="frame">
+          <img src="Resurser.png" alt="Resurser: ekonomi, våldskapital, kompetens och socialt." data-img />
         </div>
-      </details>
-    </section>
 
-    <!-- 9) Livscykel -->
-    <section id="livscykel" class="section">
-      <details class="panel">
-        <summary class="panel__summary">
-          <span class="panel__title">9) Antagonistens livscykel</span>
-          <span class="panel__meta">Fäll ut/in</span>
-        </summary>
+        <div class="controls">
+          <button class="iconbtn" data-zoom="out">−</button>
+          <button class="iconbtn" data-zoom="reset">100%</button>
+          <button class="iconbtn" data-zoom="in">+</button>
+          <button class="iconbtn" data-fit>Passa</button>
+          <button class="btn" data-open>Öppna</button>
+        </div>
 
-        <div class="panel__content">
-          <p class="note">
-            Hotet utvecklas i faser. Tidiga insatser är ofta mest effektiva innan resurser och facilitering byggs upp.
-          </p>
+        <p class="module__desc">
+          Intern kontrollerad förmåga: tillgångar, kompetenser och struktur som aktören själv disponerar.
+        </p>
+      </article>
 
-          <div class="grid grid--1">
-            <figure class="card">
-              <img
-                src="antagonistisklivscykel.png"
-                alt="Antagonistens livscykel: rekrytering, mobilisering/radikalisering, uppbyggnad, handling, konfrontation/nedgång."
-                data-lightbox
-              />
-              <figcaption>Livscykel: hur hotet formas, förstärks och operationaliseras</figcaption>
-            </figure>
+      <!-- 7 -->
+      <article class="module" data-tags="dimension">
+        <header class="module__head">
+          <div>
+            <div class="module__kicker">7) Dimension 4</div>
+            <h2 class="module__title">Tillfälle (Tid & Rum)</h2>
           </div>
+          <div class="module__pill">Fönster</div>
+        </header>
+
+        <div class="frame">
+          <img src="Tillfälle.png" alt="Tillfälle: tid och rum, skala och faktorer." data-img />
         </div>
-      </details>
+
+        <div class="controls">
+          <button class="iconbtn" data-zoom="out">−</button>
+          <button class="iconbtn" data-zoom="reset">100%</button>
+          <button class="iconbtn" data-zoom="in">+</button>
+          <button class="iconbtn" data-fit>Passa</button>
+          <button class="btn" data-open>Öppna</button>
+        </div>
+
+        <p class="module__desc">
+          Konvergensen av sårbarhet och förmåga. Avgör om och när kapacitet kan omsättas till effekt.
+        </p>
+      </article>
+
+      <!-- 8 -->
+      <article class="module" data-tags="scenarier metod">
+        <header class="module__head">
+          <div>
+            <div class="module__kicker">8) Scenarier</div>
+            <h2 class="module__title">Bästa, troligast, värsta</h2>
+          </div>
+          <div class="module__pill">Spann</div>
+        </header>
+
+        <div class="frame">
+          <img src="scenarioplanering.png" alt="Scenarioplanering: bästa, troligast, värsta." data-img />
+        </div>
+
+        <div class="controls">
+          <button class="iconbtn" data-zoom="out">−</button>
+          <button class="iconbtn" data-zoom="reset">100%</button>
+          <button class="iconbtn" data-zoom="in">+</button>
+          <button class="iconbtn" data-fit>Passa</button>
+          <button class="btn" data-open>Öppna</button>
+        </div>
+
+        <p class="module__desc">
+          Gör osäkerhet och riskaptit hanterbar genom ett spann av utfall per dimension och totalt.
+        </p>
+      </article>
+
+      <!-- 9 -->
+      <article class="module" data-tags="livscykel">
+        <header class="module__head">
+          <div>
+            <div class="module__kicker">9) Livscykel</div>
+            <h2 class="module__title">Antagonistens livscykel</h2>
+          </div>
+          <div class="module__pill">Faser</div>
+        </header>
+
+        <div class="frame">
+          <img src="antagonistisklivscykel.png" alt="Antagonistens livscykel: faser från rekrytering till nedgång." data-img />
+        </div>
+
+        <div class="controls">
+          <button class="iconbtn" data-zoom="out">−</button>
+          <button class="iconbtn" data-zoom="reset">100%</button>
+          <button class="iconbtn" data-zoom="in">+</button>
+          <button class="iconbtn" data-fit>Passa</button>
+          <button class="btn" data-open>Öppna</button>
+        </div>
+
+        <p class="module__desc">
+          Hotet utvecklas i faser. Tidiga insatser brukar ge bäst effekt innan uppbyggnad och handling.
+        </p>
+      </article>
     </section>
 
     <footer class="footer">
       <div class="footer__inner">
-        <div>GitHub Pages • Klicka bilder för visare • ESC stänger</div>
-        <div class="footer__right">
-          <a class="link" href="#main">Till toppen</a>
-        </div>
+        <div>Tips: Dubbelklick = 100%↔200% • Scroll = zoom • Dra = panorera</div>
+        <div class="footer__right"><a class="link" href="#">Till toppen</a></div>
       </div>
     </footer>
   </main>
 
-  <!-- Lightbox -->
-  <div id="lightbox" class="lightbox" aria-hidden="true">
-    <div class="lightbox__backdrop" data-close></div>
+  <!-- Viewer -->
+  <div id="viewer" class="viewer" aria-hidden="true">
+    <div class="viewer__backdrop" data-close></div>
 
-    <div class="lightbox__panel" role="dialog" aria-modal="true" aria-label="Bildvisare">
-      <div class="lightbox__toolbar">
-        <div class="lightbox__title" id="lightboxTitle">Bild</div>
-        <div class="lightbox__buttons">
-          <button class="btn btn--ghost" type="button" id="btnZoomOut" title="Zooma ut">−</button>
-          <button class="btn btn--ghost" type="button" id="btnZoomReset" title="Återställ zoom">100%</button>
-          <button class="btn btn--ghost" type="button" id="btnZoomIn" title="Zooma in">+</button>
-          <button class="btn" type="button" id="btnFullscreen" title="Helskärm">Helskärm</button>
-          <button class="btn btn--danger" type="button" id="btnClose" title="Stäng (ESC)">Stäng</button>
+    <div class="viewer__panel" role="dialog" aria-modal="true" aria-label="Bildvisare">
+      <div class="viewer__toolbar">
+        <div class="viewer__title" id="viewerTitle">Bild</div>
+        <div class="viewer__buttons">
+          <button class="iconbtn" id="vZoomOut" title="Zooma ut">−</button>
+          <button class="iconbtn" id="vZoomReset" title="Återställ">100%</button>
+          <button class="iconbtn" id="vZoomIn" title="Zooma in">+</button>
+          <button class="btn" id="vFullscreen" title="Helskärm">Helskärm</button>
+          <button class="btn btn--danger" id="vClose" title="Stäng">Stäng</button>
         </div>
       </div>
 
-      <div class="lightbox__stage" id="stage">
-        <img id="lightboxImg" alt="" />
+      <div class="viewer__stage" id="viewerStage">
+        <img id="viewerImg" alt="" />
       </div>
 
-      <div class="lightbox__hint">
-        Tips: Scrollhjul = zoom • Dra = panorera • Dubbelklick = zoom • F = helskärm • 0 = reset • ESC = stäng
+      <div class="viewer__hint">
+        Scroll = zoom • Dra = panorera • Dubbelklick = 100%↔200% • F = helskärm • ESC = stäng
       </div>
     </div>
   </div>
