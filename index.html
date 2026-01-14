@@ -1,10 +1,17 @@
+<!-- =========================
+     index.html (NY) – anpassad till dina filnamn i repo-root
+     Filerna måste ligga i samma mapp som index.html:
+     Bedömningsnivåer.png, Resurser.png, Tillfälle.png, antagonist.kapacitet.png,
+     antagonistisklivscykel.png, facilitering.png, intentioner.png, kapacitet.png,
+     scenarioplanering.png, app.js, style.css
+========================= -->
 <!doctype html>
 <html lang="sv">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Undervisning: Antagonistisk kapacitet</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="style.css" />
   <meta name="color-scheme" content="light dark" />
 </head>
 
@@ -15,7 +22,7 @@
     <div class="container topbar__inner">
       <div class="brand">
         <div class="brand__title">Undervisningsmaterial</div>
-        <div class="brand__subtitle">Antagonistisk kapacitet • Intentioner • Facilitering • Resurser • Tillfälle</div>
+        <div class="brand__subtitle">Kapacitet • Intentioner • Facilitering • Resurser • Tillfälle</div>
       </div>
 
       <div class="topbar__actions">
@@ -30,13 +37,13 @@
       <div class="hero__text">
         <h1>Så bedömer du antagonistisk kapacitet</h1>
         <p>
-          Klicka på en bild för att öppna den i visare. Du kan zooma, panorera och slå på helskärm
-          för utbildningsgenomgångar. ESC stänger.
+          Klicka på en bild för att öppna visaren. Zooma med scroll, panorera genom att dra,
+          slå på helskärm och använd ESC för att stänga.
         </p>
 
         <div class="chips">
           <a class="chip" href="#kapacitet">Kapacitet</a>
-          <a class="chip" href="#oversikt">Översikt & process</a>
+          <a class="chip" href="#oversikt">Översikt</a>
           <a class="chip" href="#bedomning">Bedömningsnivåer</a>
           <a class="chip" href="#intentioner">Intentioner</a>
           <a class="chip" href="#facilitering">Facilitering</a>
@@ -48,9 +55,7 @@
       </div>
     </section>
 
-    <!-- ===================== -->
-    <!-- 1) KAPACITET (formel)  -->
-    <!-- ===================== -->
+    <!-- 1) Kapacitet -->
     <section id="kapacitet" class="section">
       <details class="panel" open>
         <summary class="panel__summary">
@@ -61,13 +66,13 @@
         <div class="panel__content">
           <p class="note">
             Kapacitet är ett samlat mått av <b>intentioner</b>, <b>facilitering</b>, <b>resurser</b> och <b>tillfälle</b>.
-            En aktör kan vara stark i en dimension men svag i andra – därför krävs en sammanvägd bedömning.
+            Totalen kräver en sammanvägd bedömning.
           </p>
 
           <div class="grid grid--1">
             <figure class="card">
               <img
-                src="assets/kapacitet.png"
+                src="kapacitet.png"
                 alt="Kapacitet är summan av fyra dimensioner: intentioner, facilitering, resurser, tillfälle."
                 data-lightbox
               />
@@ -78,9 +83,7 @@
       </details>
     </section>
 
-    <!-- ===================== -->
-    <!-- 2) ÖVERSIKT & PROCESS  -->
-    <!-- ===================== -->
+    <!-- 2) Översikt -->
     <section id="oversikt" class="section">
       <details class="panel" open>
         <summary class="panel__summary">
@@ -90,14 +93,13 @@
 
         <div class="panel__content">
           <p class="note">
-            Den praktiska arbetsprocessen: identifiera och gradera fenomen per dimension, beräkna kapacitetsvärden,
-            och sammanställ bästa/troligast/värsta för ett nyanserat utfall.
+            Arbeta i tre steg: identifiera & gradera fenomen, beräkna kapacitetsvärden och sammanställ bästa/troligast/värsta.
           </p>
 
           <div class="grid grid--1">
             <figure class="card">
               <img
-                src="assets/antagonist.kapacitet.png"
+                src="antagonist.kapacitet.png"
                 alt="Så bedömer du en antagonists kapacitet: fyra dimensioner, tre steg och ett samlat utfall."
                 data-lightbox
               />
@@ -107,19 +109,19 @@
 
           <div class="grid grid--2">
             <div class="textblock">
-              <h3>Tre steg i praktiken</h3>
+              <h3>Tre steg</h3>
               <ol class="steps">
-                <li><b>Identifiera & gradera</b> relevanta fenomen per dimension.</li>
-                <li><b>Beräkna</b> kapacitetsvärde per dimension.</li>
-                <li><b>Sammanställ</b> bästa, troligast och värsta scenario.</li>
+                <li><b>Identifiera & gradera</b> fenomen per dimension.</li>
+                <li><b>Beräkna</b> kapacitetsvärden.</li>
+                <li><b>Sammanställ</b> scenarier och total.</li>
               </ol>
             </div>
             <div class="textblock">
               <h3>Princip</h3>
               <ul>
-                <li>Håll isär <b>förmåga</b> och <b>vilja</b>.</li>
-                <li>Bedömningar ska vara spårbara via <b>fenomen</b>.</li>
-                <li>Osäkerhet ska synas tydligt genom nivåer/legend.</li>
+                <li>Spårbarhet via fenomen.</li>
+                <li>Osäkerhet ska synas.</li>
+                <li>Håll isär vilja och förmåga.</li>
               </ul>
             </div>
           </div>
@@ -127,9 +129,7 @@
       </details>
     </section>
 
-    <!-- ===================== -->
-    <!-- 3) BEDÖMNINGSNIVÅER     -->
-    <!-- ===================== -->
+    <!-- 3) Bedömningsnivåer -->
     <section id="bedomning" class="section">
       <details class="panel">
         <summary class="panel__summary">
@@ -139,14 +139,13 @@
 
         <div class="panel__content">
           <p class="note">
-            Fenomen listas per dimension och färgkodas för att signalera underrättelselägets säkerhet
-            (tveksamt → bekräftat). Klicka på bilden för helskärm/zoom.
+            Fenomen färgkodas för att signalera underrättelselägets säkerhet (tveksamt → bekräftat).
           </p>
 
           <div class="grid grid--1">
             <figure class="card">
               <img
-                src="assets/Bedömningsnivåer.png"
+                src="Bedömningsnivåer.png"
                 alt="Arbetsgång: kartläggning av fenomen och visualisering av osäkerhetsfaktorer med bedömningsnivåer."
                 data-lightbox
               />
@@ -157,9 +156,7 @@
       </details>
     </section>
 
-    <!-- ===================== -->
-    <!-- 4) INTENTIONER          -->
-    <!-- ===================== -->
+    <!-- 4) Intentioner -->
     <section id="intentioner" class="section">
       <details class="panel" open>
         <summary class="panel__summary">
@@ -171,48 +168,25 @@
           <div class="callout">
             <div class="callout__title">Definition</div>
             <div class="callout__body">
-              Drivkrafter och mål som styr handlingen. Intentioner kan variera över tid beroende på ambition,
-              press eller nya möjligheter.
+              Drivkrafter och mål som styr handlingen. Kan variera över tid beroende på ambition, press eller nya möjligheter.
             </div>
           </div>
 
           <div class="grid grid--1">
             <figure class="card">
               <img
-                src="assets/intentioner.png"
+                src="intentioner.png"
                 alt="Dimension 1: Intentioner – definition, skala 1-5 och exempel."
                 data-lightbox
               />
               <figcaption>Intentioner: definition, skala (1–5) och exempel</figcaption>
             </figure>
           </div>
-
-          <div class="grid grid--2">
-            <div class="textblock">
-              <h3>Analysfrågor</h3>
-              <ul>
-                <li>Vilka mål är explicita respektive implicita?</li>
-                <li>Är avsikten uthållig eller situationsbetingad?</li>
-                <li>Är målen förhandlingsbara eller absoluta?</li>
-                <li>Finns tecken på eskalering (legitimering, målfokus, avhumanisering)?</li>
-              </ul>
-            </div>
-            <div class="textblock">
-              <h3>Vanliga fel</h3>
-              <ul>
-                <li>Retorik tolkas som handling (eller handling utan bakomliggande viljeanalys).</li>
-                <li>Enstaka uttalanden viktas högre än mönster över tid.</li>
-                <li>Spegling: bedömning utifrån egen logik i stället för antagonistens.</li>
-              </ul>
-            </div>
-          </div>
         </div>
       </details>
     </section>
 
-    <!-- ===================== -->
-    <!-- 5) FACILITERING         -->
-    <!-- ===================== -->
+    <!-- 5) Facilitering -->
     <section id="facilitering" class="section">
       <details class="panel">
         <summary class="panel__summary">
@@ -222,13 +196,13 @@
 
         <div class="panel__content">
           <p class="note">
-            Facilitering är det externa beroendet: möjliggörare, nätverk, plattformar, logistik och tredje part.
+            Facilitering är externa beroenden: möjliggörare, nätverk, plattformar, logistik och tredje part.
           </p>
 
           <div class="grid grid--1">
             <figure class="card">
               <img
-                src="assets/facilitering.png"
+                src="facilitering.png"
                 alt="Dimension 2: Facilitering – definition, skala 1-5 och exempel."
                 data-lightbox
               />
@@ -239,9 +213,7 @@
       </details>
     </section>
 
-    <!-- ===================== -->
-    <!-- 6) RESURSER             -->
-    <!-- ===================== -->
+    <!-- 6) Resurser -->
     <section id="resurser" class="section">
       <details class="panel">
         <summary class="panel__summary">
@@ -257,7 +229,7 @@
           <div class="grid grid--1">
             <figure class="card">
               <img
-                src="assets/Resurser.png"
+                src="Resurser.png"
                 alt="Dimension 3: Resurser – ekonomi, våldskapital, kompetens och socialt."
                 data-lightbox
               />
@@ -268,9 +240,7 @@
       </details>
     </section>
 
-    <!-- ===================== -->
-    <!-- 7) TILLFÄLLE            -->
-    <!-- ===================== -->
+    <!-- 7) Tillfälle -->
     <section id="tillfalle" class="section">
       <details class="panel">
         <summary class="panel__summary">
@@ -286,7 +256,7 @@
           <div class="grid grid--1">
             <figure class="card">
               <img
-                src="assets/Tillfälle.png"
+                src="Tillfälle.png"
                 alt="Dimension 4: Tillfälle (Tid & Rum) – definition, skala 1-5 och faktorer."
                 data-lightbox
               />
@@ -297,9 +267,7 @@
       </details>
     </section>
 
-    <!-- ===================== -->
-    <!-- 8) SCENARIOPLANERING    -->
-    <!-- ===================== -->
+    <!-- 8) Scenarioplanering -->
     <section id="scenarier" class="section">
       <details class="panel" open>
         <summary class="panel__summary">
@@ -309,13 +277,13 @@
 
         <div class="panel__content">
           <p class="note">
-            Scenarier ger ett spann av möjliga utfall. Det stödjer planering, prioritering och riskaptit.
+            Scenarier ger ett spann av möjliga utfall och stödjer planering, prioritering och riskaptit.
           </p>
 
           <div class="grid grid--1">
             <figure class="card">
               <img
-                src="assets/scenarioplanering.png"
+                src="scenarioplanering.png"
                 alt="Scenarioplanering: bästa, troligast, värsta och kapacitetsmått i procent."
                 data-lightbox
               />
@@ -326,9 +294,7 @@
       </details>
     </section>
 
-    <!-- ===================== -->
-    <!-- 9) LIVSCYKEL            -->
-    <!-- ===================== -->
+    <!-- 9) Livscykel -->
     <section id="livscykel" class="section">
       <details class="panel">
         <summary class="panel__summary">
@@ -338,18 +304,17 @@
 
         <div class="panel__content">
           <p class="note">
-            Hot utvecklas i faser: rekrytering, mobilisering/radikalisering, uppbyggnad, handling och konfrontation/nedgång.
-            Tidiga insatser är ofta mest effektiva innan resurser och facilitering byggs upp.
+            Hotet utvecklas i faser. Tidiga insatser är ofta mest effektiva innan resurser och facilitering byggs upp.
           </p>
 
           <div class="grid grid--1">
             <figure class="card">
               <img
-                src="assets/antagonistisklivscykel.png"
+                src="antagonistisklivscykel.png"
                 alt="Antagonistens livscykel: rekrytering, mobilisering/radikalisering, uppbyggnad, handling, konfrontation/nedgång."
                 data-lightbox
               />
-              <figcaption>Livscykel: när och hur hotet formas, förstärks och operationaliseras</figcaption>
+              <figcaption>Livscykel: hur hotet formas, förstärks och operationaliseras</figcaption>
             </figure>
           </div>
         </div>
@@ -366,7 +331,7 @@
     </footer>
   </main>
 
-  <!-- Lightbox / Fullscreen viewer -->
+  <!-- Lightbox -->
   <div id="lightbox" class="lightbox" aria-hidden="true">
     <div class="lightbox__backdrop" data-close></div>
 
