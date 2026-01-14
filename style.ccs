@@ -96,17 +96,13 @@ img{ max-width:100%; height:auto; display:block; }
 .btn:hover{ filter: brightness(1.06); }
 .btn:active{ transform: translateY(1px); }
 
-.btn--ghost{
-  background: transparent;
-}
+.btn--ghost{ background: transparent; }
 .btn--danger{
   background: rgba(220,38,38,.18);
   border-color: rgba(220,38,38,.30);
 }
 
-.hero{
-  padding: 18px 0 8px;
-}
+.hero{ padding: 18px 0 8px; }
 .hero__text{
   border: 1px solid var(--border);
   background: linear-gradient(180deg, var(--card2), var(--card));
@@ -143,9 +139,7 @@ img{ max-width:100%; height:auto; display:block; }
   background: var(--card2);
 }
 
-.section{
-  padding: 14px 0;
-}
+.section{ padding: 14px 0; }
 
 .panel{
   border: 1px solid var(--border);
@@ -166,21 +160,14 @@ img{ max-width:100%; height:auto; display:block; }
   border-bottom: 1px solid color-mix(in srgb, var(--border) 60%, transparent);
 }
 .panel__summary::-webkit-details-marker{ display:none; }
-.panel__title{
-  font-weight: 850;
-}
+.panel__title{ font-weight: 850; }
 .panel__meta{
   color: var(--muted);
   font-size: 13px;
 }
-.panel__content{
-  padding: 14px 16px 18px;
-}
+.panel__content{ padding: 14px 16px 18px; }
 
-.note{
-  margin: 0 0 14px 0;
-  color: var(--muted);
-}
+.note{ margin: 0 0 14px 0; color: var(--muted); }
 
 .grid{
   display:grid;
@@ -188,7 +175,6 @@ img{ max-width:100%; height:auto; display:block; }
 }
 .grid--1{ grid-template-columns: 1fr; }
 .grid--2{ grid-template-columns: 1fr; }
-
 @media (min-width: 900px){
   .grid--2{ grid-template-columns: 1fr 1fr; }
 }
@@ -199,9 +185,8 @@ img{ max-width:100%; height:auto; display:block; }
   border-radius: var(--radius);
   overflow: hidden;
 }
-.card img{
-  cursor: zoom-in;
-}
+.card img{ cursor: zoom-in; }
+
 figcaption{
   padding: 10px 12px 12px;
   color: var(--muted);
@@ -210,7 +195,8 @@ figcaption{
 }
 
 .steps{
-  margin: 0 0 14px 18px;
+  margin: 0;
+  padding-left: 18px;
   color: var(--muted);
 }
 .steps b{ color: var(--fg); }
@@ -222,10 +208,7 @@ figcaption{
   padding: 12px 12px;
   margin-bottom: 14px;
 }
-.callout__title{
-  font-weight: 850;
-  margin-bottom: 6px;
-}
+.callout__title{ font-weight: 850; margin-bottom: 6px; }
 .callout__body{ color: var(--muted); }
 
 .textblock{
@@ -244,9 +227,7 @@ figcaption{
   color: var(--muted);
 }
 
-.footer{
-  padding: 26px 0 40px;
-}
+.footer{ padding: 26px 0 40px; }
 .footer__inner{
   display:flex;
   justify-content:space-between;
@@ -335,7 +316,7 @@ figcaption{
   transform-origin: center center;
   user-select: none;
   -webkit-user-drag: none;
-  max-width: none; /* important for zoom */
+  max-width: none;
 }
 
 .lightbox__hint{
