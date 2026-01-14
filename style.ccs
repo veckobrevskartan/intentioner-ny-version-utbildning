@@ -231,4 +231,117 @@ figcaption{
 .textblock{
   border: 1px dashed color-mix(in srgb, var(--border) 80%, transparent);
   border-radius: var(--radius);
-  padding:
+  padding: 12px 12px;
+  background: color-mix(in srgb, var(--card2) 50%, transparent);
+}
+.textblock h3{
+  margin: 0 0 8px 0;
+  font-size: 16px;
+}
+.textblock ul{
+  margin: 0;
+  padding-left: 18px;
+  color: var(--muted);
+}
+
+.footer{
+  padding: 26px 0 40px;
+}
+.footer__inner{
+  display:flex;
+  justify-content:space-between;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 13px;
+  border-top: 1px solid var(--border);
+  padding-top: 14px;
+}
+.footer__right .link{
+  text-decoration:none;
+  border-bottom: 1px dashed color-mix(in srgb, var(--muted) 50%, transparent);
+}
+.footer__right .link:hover{ color: var(--fg); }
+
+/* =========================
+   LIGHTBOX
+========================= */
+.lightbox{
+  position: fixed;
+  inset: 0;
+  display: none;
+  z-index: 200;
+}
+.lightbox.is-open{ display:block; }
+
+.lightbox__backdrop{
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,.72);
+}
+
+.lightbox__panel{
+  position: relative;
+  margin: 14px auto;
+  width: min(1200px, calc(100% - 22px));
+  height: calc(100% - 28px);
+  background: color-mix(in srgb, var(--bg) 92%, black);
+  border: 1px solid var(--border);
+  border-radius: var(--radius2);
+  box-shadow: var(--shadow);
+  display:flex;
+  flex-direction:column;
+  overflow: hidden;
+}
+
+.lightbox__toolbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 10px;
+  padding: 10px 10px;
+  border-bottom: 1px solid var(--border);
+  background: color-mix(in srgb, var(--card2) 70%, transparent);
+}
+.lightbox__title{
+  font-weight: 800;
+  color: var(--muted);
+  font-size: 13px;
+  white-space: nowrap;
+  overflow:hidden;
+  text-overflow: ellipsis;
+  max-width: 45%;
+}
+.lightbox__buttons{
+  display:flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content:flex-end;
+}
+
+.lightbox__stage{
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  background: radial-gradient(circle at 30% 20%, rgba(255,255,255,.05), transparent 40%);
+  cursor: grab;
+}
+.lightbox__stage:active{ cursor: grabbing; }
+
+.lightbox__stage img{
+  position:absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%) scale(1);
+  transform-origin: center center;
+  user-select: none;
+  -webkit-user-drag: none;
+  max-width: none; /* important for zoom */
+}
+
+.lightbox__hint{
+  padding: 8px 10px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 12px;
+  background: color-mix(in srgb, var(--card2) 50%, transparent);
+}
