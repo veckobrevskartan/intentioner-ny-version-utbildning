@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Undervisning: Antagonistisk kapacitet – Intentioner</title>
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="color-scheme" content="light dark" />
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Hoppa till innehåll</a>
+
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <div class="brand">
+        <div class="brand__title">Undervisningsmaterial</div>
+        <div class="brand__subtitle">Antagonistisk kapacitet • Intentioner • Facilitering • Resurser • Tillfälle</div>
+      </div>
+
+      <div class="topbar__actions">
+        <button id="btnExpandAll" class="btn" type="button" title="Öppna alla avsnitt">Öppna alla</button>
+        <button id="btnCollapseAll" class="btn btn--ghost" type="button" title="Stäng alla avsnitt">Stäng alla</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <section class="hero">
+      <div class="hero__text">
+        <h1>Så bedömer du antagonistisk kapacitet</h1>
+        <p>
+          Klicka på varje bild för att öppna den i helskärm och zooma.
+          Varje avsnitt går att fälla ut/in för att användas i utbildningspass.
+        </p>
+        <div class="chips">
+          <a class="chip" href="#kapacitet">Kapacitet</a>
+          <a class="chip" href="#metod">Process</a>
+          <a class="chip" href="#intentioner">Intentioner</a>
+          <a class="chip" href="#facilitering">Facilitering</a>
+          <a class="chip" href="#resurser">Resurser</a>
+          <a class="chip" href="#scenarier">Scenarier</a>
+          <a class="chip" href="#livscykel">Livscykel</a>
+          <a class="chip" href="#bedomning">Bedömningsnivåer</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== -->
+    <!-- KAPACITET (översikt)  -->
+    <!-- ===================== -->
+    <section id="kapacitet" class="section">
+      <details class="panel" open>
+        <summary class="panel__summary">
+          <span class="panel__title">1) Kapacitet – fyra dimensioner</span>
+          <span class="panel__meta">Klicka för att fälla ut/in</span>
+        </summary>
+
+        <div class="panel__content">
+          <p class="note">
+            Kapacitet är en sammanvägd bild av <b>intentioner</b>, <b>facilitering</b>, <b>resurser</b> och <b>tillfälle</b>.
+            En aktör kan vara stark i en dimension men svag i andra.
+          </p>
+
+          <div class="grid grid--2">
+            <figure class="card">
+              <img
+                src="assets/kapacitet.png"
+                alt="Kapacitet är summan av fyra dimensioner: intentioner, facilitering, resurser, tillfälle."
+                data-lightbox
+              />
+              <figcaption>Visuell översikt: kapacitet = intentioner + facilitering + resurser + tillfälle</figcaption>
+            </figure>
+
+            <figure class="card">
+              <img
+                src="assets/antagonist.kapacitet.png"
+                alt="Så bedömer du en antagonists kapacitet: fyra dimensioner, tre steg, samlat utfall."
+                data-lightbox
+              />
+              <figcaption>Översikt: dimensioner, arbetsprocess och samlat utfall</figcaption>
+            </figure>
+          </div>
+        </div>
+      </details>
+    </section>
+
+    <!-- ===================== -->
+    <!-- METOD / PROCESS        -->
+    <!-- ===================== -->
+    <section id="metod" class="section">
+      <details class="panel">
+        <summary class="panel__summary">
+          <span class="panel__title">2) Arbetsprocess – från fenomen till samlat utfall</span>
+          <span class="panel__meta">Klicka för att fälla ut/in</span>
+        </summary>
+
+        <div class="panel__content">
+          <ol class="steps">
+            <li><b>Identifiera och lista fenomen</b> per dimension.</li>
+            <li><b>Gradera</b> varje fenomen utifrån underrättelselägets säkerhet och påverkan.</li>
+            <li><b>Sammanställ</b> bästa, troligast och värsta scenario till ett samlat kapacitetsmått.</li>
+          </ol>
+
+          <div class="grid grid--1">
+            <figure class="card">
+              <img
+                src="assets/Bedömningsnivåer.png"
+                alt="Arbetsgång: kartläggning av fenomen och visualisering av osäkerhetsfaktorer."
+                data-lightbox
+              />
+              <figcaption>Färgkodning av underrättelseläge vid kartläggning av fenomen</figcaption>
+            </figure>
+          </div>
+        </div>
+      </details>
+    </section>
+
+    <!-- ===================== -->
+    <!-- INTENTIONER            -->
+    <!-- ===================== -->
+    <section id="intentioner" class="section">
+      <details class="panel" open>
+        <summary class="panel__summary">
+          <span class="panel__title">3) Dimension 1 – Intentioner</span>
+          <span class="panel__meta">Klicka för att fälla ut/in</span>
+        </summary>
+
+        <div class="panel__content">
+          <div class="callout">
+            <div class="callout__title">Syfte</div>
+            <div class="callout__body">
+              Intentioner beskriver <b>drivkrafter och mål</b> som styr handlingen.
+              De kan skifta över tid och skilja sig mellan nivåer inom samma organisation.
+            </div>
+          </div>
+
+          <div class="grid grid--1">
+            <figure class="card">
+              <img
+                src="assets/intentioner.png"
+                alt="Dimension 1: Intentioner – definition, skala 1-5 och exempel."
+                data-lightbox
+              />
+              <figcaption>Intentioner: definition, skala (1–5) och exempel</figcaption>
+            </figure>
+          </div>
+
+          <div class="grid grid--2">
+            <div class="textblock">
+              <h3>Analysfrågor</h3>
+              <ul>
+                <li>Vilka mål uttrycks (explicit/implicit)?</li>
+                <li>Finns uthållighet över tid eller opportunism?</li>
+                <li>Är målen förhandlingsbara eller absoluta?</li>
+                <li>Finns indikatorer på eskalering (retorik, legitimering, målfokus)?</li>
+              </ul>
+            </div>
+            <div class="textblock">
+              <h3>Vanliga fel</h3>
+              <ul>
+                <li>Att tolka propaganda som handling (eller tvärtom).</li>
+                <li>Att överskatta intention p.g.a. enskilda uttalanden utan stöd i mönster.</li>
+                <li>Att spegla egna värderingar istället för att förstå aktörens logik.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </details>
+    </section>
+
+    <!-- ===================== -->
+    <!-- FACILITERING           -->
+    <!-- ===================== -->
+    <section id="facilitering" class="section">
+      <details class="panel">
+        <summary class="panel__summary">
+          <span class="panel__title">4) Dimension 2 – Facilitering</span>
+          <span class="panel__meta">Klicka för att fälla ut/in</span>
+        </summary>
+
+        <div class="panel__content">
+          <p class="note">
+            Facilitering är det <b>externa beroendet</b>: kontaktnät, möjliggörare, plattformar, logistik och tredje part.
+          </p>
+
+          <div class="grid grid--1">
+            <figure class="card">
+              <img
+                src="assets/facilitering.png"
+                alt="Dimension 2: Facilitering – definition, skala 1-5 och exempel."
+                data-lightbox
+              />
+              <figcaption>Facilitering: definition, skala och exempel på möjliggörare</figcaption>
+            </figure>
+          </div>
+        </div>
+      </details>
+    </section>
+
+    <!-- ===================== -->
+    <!-- RESURSER               -->
+    <!-- ===================== -->
+    <section id="resurser" class="section">
+      <details class="panel">
+        <summary class="panel__summary">
+          <span class="panel__title">5) Dimension 3 – Resurser</span>
+          <span class="panel__meta">Klicka för att fälla ut/in</span>
+        </summary>
+
+        <div class="panel__content">
+          <p class="note">
+            Resurser är <b>intern, kontrollerad förmåga</b>: ekonomi, våldskapital, kompetens och social struktur.
+          </p>
+
+          <div class="grid grid--1">
+            <figure class="card">
+              <img
+                src="assets/Resurser.png"
+                alt="Dimension 3: Resurser – ekonomi, våldskapital, kompetens och socialt."
+                data-lightbox
+              />
+              <figcaption>Resurser: intern, kontrollerad förmåga</figcaption>
+            </figure>
+          </div>
+        </div>
+      </details>
+    </section>
+
+    <!-- ===================== -->
+    <!-- SCENARIOPLANERING      -->
+    <!-- ===================== -->
+    <section id="scenarier" class="section">
+      <details class="panel">
+        <summary class="panel__summary">
+          <span class="panel__title">6) Scenario: Bästa, Troligast, Värsta</span>
+          <span class="panel__meta">Klicka för att fälla ut/in</span>
+        </summary>
+
+        <div class="panel__content">
+          <p class="note">
+            Scenarier ger ett spann av möjliga utfall. Det underlättar planering, prioritering och riskaptit.
+          </p>
+
+          <div class="grid grid--1">
+            <figure class="card">
+              <img
+                src="assets/scenarioplanering.png"
+                alt="Scenarioplanering: bästa, troligast, värsta och kapacitetsmått i procent."
+                data-lightbox
+              />
+              <figcaption>Scenarioplanering: procentspann per dimension och totalt</figcaption>
+            </figure>
+          </div>
+        </div>
+      </details>
+    </section>
+
+    <!-- ===================== -->
+    <!-- LIVSCYKEL              -->
+    <!-- ===================== -->
+    <section id="livscykel" class="section">
+      <details class="panel">
+        <summary class="panel__summary">
+          <span class="panel__title">7) Antagonistens livscykel</span>
+          <span class="panel__meta">Klicka för att fälla ut/in</span>
+        </summary>
+
+        <div class="panel__content">
+          <p class="note">
+            Hot utvecklas i faser. Tidiga insatser är ofta mest effektiva innan resurser och facilitering byggs upp.
+          </p>
+
+          <div class="grid grid--1">
+            <figure class="card">
+              <img
+                src="assets/antagonistisklivscykel.png"
+                alt="Antagonistens livscykel: rekrytering, mobilisering/radikalisering, uppbyggnad, handling, konfrontation/nedgång."
+                data-lightbox
+              />
+              <figcaption>Livscykel: var hotet formas, förstärks och operationaliseras</figcaption>
+            </figure>
+          </div>
+        </div>
+      </details>
+    </section>
+
+    <!-- ===================== -->
+    <!-- BEDÖMNINGSNIVÅER        -->
+    <!-- ===================== -->
+    <section id="bedomning" class="section">
+      <details class="panel">
+        <summary class="panel__summary">
+          <span class="panel__title">8) Underlagets säkerhet – bedömningsnivåer</span>
+          <span class="panel__meta">Klicka för att fälla ut/in</span>
+        </summary>
+
+        <div class="panel__content">
+          <p class="note">
+            Färgkodning signalerar underrättelselägets säkerhet och hjälper till att hålla isär antaganden och bekräftade uppgifter.
+          </p>
+
+          <div class="grid grid--1">
+            <figure class="card">
+              <img
+                src="assets/Bedömningsnivåer.png"
+                alt="Bedömningsnivåer: bekräftat, sannolikt, troligt, möjligt, tveksamt."
+                data-lightbox
+              />
+              <figcaption>Bedömningsnivåer för fenomen (osäkerhetsvisualisering)</figcaption>
+            </figure>
+          </div>
+        </div>
+      </details>
+    </section>
+
+    <footer class="footer">
+      <div class="footer__inner">
+        <div>GitHub Pages • Klicka på bilder för helskärm • ESC stänger</div>
+        <div class="footer__right">
+          <a class="link" href="#main">Till toppen</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Lightbox / Fullscreen viewer -->
+  <div id="lightbox" class="lightbox" aria-hidden="true">
+    <div class="lightbox__backdrop" data-close></div>
+
+    <div class="lightbox__panel" role="dialog" aria-modal="true" aria-label="Bildvisare">
+      <div class="lightbox__toolbar">
+        <div class="lightbox__title" id="lightboxTitle">Bild</div>
+        <div class="lightbox__buttons">
+          <button class="btn btn--ghost" type="button" id="btnZoomOut" title="Zooma ut">−</button>
+          <button class="btn btn--ghost" type="button" id="btnZoomReset" title="Återställ zoom">100%</button>
+          <button class="btn btn--ghost" type="button" id="btnZoomIn" title="Zooma in">+</button>
+          <button class="btn" type="button" id="btnFullscreen" title="Helskärm">Helskärm</button>
+          <button class="btn btn--danger" type="button" id="btnClose" title="Stäng (ESC)">Stäng</button>
+        </div>
+      </div>
+
+      <div class="lightbox__stage" id="stage">
+        <img id="lightboxImg" alt="" />
+      </div>
+
+      <div class="lightbox__hint">
+        Tips: Scrollhjul = zoom • Dra = panorera • Dubbelklick = zoom • ESC = stäng
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
