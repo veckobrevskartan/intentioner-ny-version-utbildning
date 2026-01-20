@@ -27,8 +27,7 @@
     <section class="hero">
       <h1>Antagonistisk kapacitet</h1>
       <p>
-        Varje modul har en lika stor bildyta. Zooma direkt i modulen (±/100%), eller öppna i visare för större vy.
-        Dubbelklick på bilden växlar 100% ↔ 200%.
+        Klicka på en modul för att öppna den som en slide (helskärmsanpassad). I sliden kan du fortfarande öppna bilden i visaren för zoom/pan/helskärm.
       </p>
 
       <div class="tags" id="tagBar">
@@ -526,11 +525,47 @@
 
     <footer class="footer">
       <div class="footer__inner">
-        <div>Tips: Dubbelklick = 100%↔200% • Scroll = zoom • Dra = panorera</div>
+        <div>Tips: Klicka modul = slide • I slide: pilar = nästa/föregående • Klicka bild = öppna visare</div>
         <div class="footer__right"><a class="link" href="#">Till toppen</a></div>
       </div>
     </footer>
   </main>
+
+  <!-- SLIDE MODE -->
+  <div id="slide" class="slide" aria-hidden="true">
+    <div class="slide__backdrop" data-slide-close></div>
+
+    <div class="slide__panel" role="dialog" aria-modal="true" aria-label="Slidevisning">
+      <div class="slide__toolbar">
+        <div class="slide__meta">
+          <div class="slide__kicker" id="sKicker">Modul</div>
+          <div class="slide__titleRow">
+            <div class="slide__title" id="sTitle">Titel</div>
+            <div class="slide__pill" id="sPill">Etikett</div>
+          </div>
+        </div>
+
+        <div class="slide__buttons">
+          <button class="btn btn--ghost" id="sPrev" title="Föregående (←)">Föregående</button>
+          <button class="btn btn--ghost" id="sNext" title="Nästa (→)">Nästa</button>
+          <button class="btn" id="sOpenImage" title="Öppna bilden i visaren">Öppna bild</button>
+          <button class="btn" id="sFullscreen" title="Helskärm (för sliden)">Helskärm</button>
+          <button class="btn btn--danger" id="sClose" title="Stäng (ESC)">Stäng</button>
+        </div>
+      </div>
+
+      <div class="slide__body">
+        <div class="slide__imageWrap">
+          <img id="sImg" alt="" />
+          <div class="slide__imgHint">Klicka bilden för visare (zoom/pan/helskärm)</div>
+        </div>
+
+        <div class="slide__content" id="sContent">
+          <!-- lesson content injected here -->
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Viewer -->
   <div id="viewer" class="viewer" aria-hidden="true">
