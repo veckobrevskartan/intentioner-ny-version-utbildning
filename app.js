@@ -18,6 +18,25 @@
     const btnOpen = $("[data-open]", mod);
     const btnFit = $("[data-fit]", mod);
     const btns = $$("[data-zoom]", mod);
+    const controls = $(".controls", mod);
+
+    // Inject "Slide" button (always visible, always works)
+    if (controls && !controls.querySelector("[data-slidebtn]")) {
+      const slideBtn = document.createElement("button");
+      slideBtn.type = "button";
+      slideBtn.className = "btn btn--ghost";
+      slideBtn.textContent = "Slide";
+      slideBtn.setAttribute("data-slidebtn", "1");
+      // Put it right before "Öppna" if possible
+      if (btnOpen) controls.insertBefore(slideBtn, btnOpen);
+      else controls.appendChild(slideBtn);
+
+      slideBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        mod.dispatchEvent(new CustomEvent("open-slide", { bubbles: true }));
+      });
+    }
 
     // State per module
     const st = {
@@ -59,7 +78,8 @@
 
     // buttons
     btns.forEach(b => {
-      b.addEventListener("click", () => {
+      b.addEventListener("click", (e) => {
+        e.stopPropagation();
         const t = b.dataset.zoom;
         if (t === "in") setScale(st.scale * 1.2);
         if (t === "out") setScale(st.scale / 1.2);
@@ -67,7 +87,10 @@
       });
     });
 
-    btnFit?.addEventListener("click", fit);
+    btnFit?.addEventListener("click", (e) => {
+      e.stopPropagation();
+      fit();
+    });
 
     // drag pan
     frame?.addEventListener("pointerdown", (e) => {
@@ -219,16 +242,13 @@
     if (document.fullscreenElement) document.exitFullscreen().catch(()=>{});
   }
 
-  // Close handlers
   vClose?.addEventListener("click", closeViewer);
   $$("[data-close]").forEach(el => el.addEventListener("click", closeViewer));
 
-  // Zoom controls
   vZoomIn?.addEventListener("click", () => vSetScale(vState.scale * 1.2));
   vZoomOut?.addEventListener("click", () => vSetScale(vState.scale / 1.2));
   vZoomReset?.addEventListener("click", vReset);
 
-  // Wheel zoom
   vStage?.addEventListener("wheel", (e) => {
     if (!vState.open) return;
     e.preventDefault();
@@ -236,7 +256,6 @@
     vSetScale(vState.scale * factor, e.clientX, e.clientY);
   }, { passive:false });
 
-  // Drag pan
   vStage?.addEventListener("pointerdown", (e) => {
     if (!vState.open) return;
     vState.drag.active = true;
@@ -257,13 +276,11 @@
   vStage?.addEventListener("pointerup", () => vState.drag.active = false);
   vStage?.addEventListener("pointercancel", () => vState.drag.active = false);
 
-  // dblclick toggle
   vStage?.addEventListener("dblclick", (e) => {
     if (Math.abs(vState.scale - 1) < 0.05) vSetScale(2, e.clientX, e.clientY);
     else vReset();
   });
 
-  // Fullscreen
   function toggleFs(){
     const panel = $(".viewer__panel");
     if (!panel) return;
@@ -272,11 +289,8 @@
   }
   vFullscreen?.addEventListener("click", toggleFs);
 
-  // expose to module open + slide
-  window.openViewer = openViewer;
-
   // =========================
-  // SLIDE MODE (module -> fullscreen slide)
+  // SLIDE MODE
   // =========================
   const slide = $("#slide");
   const sPanel = $(".slide__panel");
@@ -292,10 +306,7 @@
   const sImg = $("#sImg");
   const sContent = $("#sContent");
 
-  const slideState = {
-    open: false,
-    idx: -1,
-  };
+  const slideState = { open:false, idx:-1 };
 
   function visibleModules(){
     return modules.filter(m => m.style.display !== "none");
@@ -332,11 +343,9 @@
     sImg.src = src;
     sImg.alt = alt;
 
-    // inject lesson content (clone)
     sContent.innerHTML = "";
     if (lessonEl){
-      const clone = lessonEl.cloneNode(true);
-      sContent.appendChild(clone);
+      sContent.appendChild(lessonEl.cloneNode(true));
     } else {
       const fallback = document.createElement("div");
       fallback.className = "lesson";
@@ -356,17 +365,8 @@
     if (document.fullscreenElement) document.exitFullscreen().catch(()=>{});
   }
 
-  function slidePrev(){
-    const vis = visibleModules();
-    if (!vis.length) return;
-    openSlideByIndex(slideState.idx - 1);
-  }
-
-  function slideNext(){
-    const vis = visibleModules();
-    if (!vis.length) return;
-    openSlideByIndex(slideState.idx + 1);
-  }
+  function slidePrev(){ openSlideByIndex(slideState.idx - 1); }
+  function slideNext(){ openSlideByIndex(slideState.idx + 1); }
 
   function toggleSlideFs(){
     if (!sPanel) return;
@@ -374,28 +374,35 @@
     else document.exitFullscreen?.().catch(()=>{});
   }
 
-  // Click-to-open slide on module (ignore clicks on controls/buttons/inputs)
-  function isInteractiveTarget(t){
-    return !!t.closest("button, a, input, textarea, select, .controls, .viewer, .slide");
-  }
-
+  // Open slide via injected button
   modules.forEach((mod) => {
-    mod.addEventListener("click", (e) => {
-      if (isInteractiveTarget(e.target)) return;
+    mod.addEventListener("open-slide", () => {
       const vis = visibleModules();
       const i = vis.indexOf(mod);
       if (i >= 0) openSlideByIndex(i);
     });
   });
 
-  // Slide buttons
+  // Open slide by clicking the card (but NOT controls/buttons)
+  function isBlockedTarget(t){
+    return !!t.closest(".controls, button, a, input, textarea, select");
+  }
+
+  modules.forEach((mod) => {
+    mod.addEventListener("click", (e) => {
+      if (isBlockedTarget(e.target)) return;
+      const vis = visibleModules();
+      const i = vis.indexOf(mod);
+      if (i >= 0) openSlideByIndex(i);
+    });
+  });
+
   sClose?.addEventListener("click", closeSlide);
   $$("[data-slide-close]").forEach(el => el.addEventListener("click", closeSlide));
   sPrev?.addEventListener("click", slidePrev);
   sNext?.addEventListener("click", slideNext);
   sFullscreen?.addEventListener("click", toggleSlideFs);
 
-  // Open image in viewer from slide
   function openSlideImageInViewer(){
     if (!slideState.open) return;
     openViewer(sImg.src, sImg.alt || sTitle.textContent || "Bild");
@@ -403,32 +410,27 @@
   sOpenImage?.addEventListener("click", openSlideImageInViewer);
   sImg?.addEventListener("click", openSlideImageInViewer);
 
-  // Keyboard for slide + viewer
+  // Keyboard
   document.addEventListener("keydown", (e) => {
-    // If viewer open, viewer handler below will handle keys (but we keep this clean)
-    if (vState.open) return;
-
-    if (slideState.open){
-      if (e.key === "Escape") { closeSlide(); return; }
-      if (e.key === "ArrowLeft") { slidePrev(); return; }
-      if (e.key === "ArrowRight") { slideNext(); return; }
-      if (e.key.toLowerCase() === "f") { toggleSlideFs(); return; }
-      if (e.key === "Enter") { openSlideImageInViewer(); return; }
+    // Viewer has priority
+    if (vState.open){
+      if (e.key === "Escape") closeViewer();
+      if (e.key === "+" || e.key === "=") vSetScale(vState.scale * 1.15);
+      if (e.key === "-" || e.key === "_") vSetScale(vState.scale / 1.15);
+      if (e.key.toLowerCase() === "f") toggleFs();
+      if (e.key === "0") vReset();
+      return;
     }
+
+    if (!slideState.open) return;
+
+    if (e.key === "Escape") closeSlide();
+    if (e.key === "ArrowLeft") slidePrev();
+    if (e.key === "ArrowRight") slideNext();
+    if (e.key.toLowerCase() === "f") toggleSlideFs();
+    if (e.key === "Enter") openSlideImageInViewer();
   });
 
-  // =========================
-  // Viewer keyboard (existing)
-  // =========================
-  document.addEventListener("keydown", (e) => {
-    if (!vState.open) return;
-    if (e.key === "Escape") closeViewer();
-    if (e.key === "+" || e.key === "=") vSetScale(vState.scale * 1.15);
-    if (e.key === "-" || e.key === "_") vSetScale(vState.scale / 1.15);
-    if (e.key.toLowerCase() === "f") toggleFs();
-    if (e.key === "0") vReset();
-  });
-
-  // initial filter state
+  // initial
   applyVisibility();
 })();
