@@ -10,7 +10,6 @@
   --r2:22px;
   --max:1200px;
 
-  /* Samma bildhöjd i alla moduler */
   --frameH: 320px;
 }
 
@@ -233,9 +232,6 @@ img{display:block; max-width:none}
   line-height: 1.45;
 }
 
-/* =========================
-   Undervisningsblock
-========================= */
 .lesson{
   margin: 0 14px 14px;
   padding: 12px 12px 12px;
@@ -290,6 +286,150 @@ img{display:block; max-width:none}
   border-bottom:1px dashed color-mix(in srgb, var(--muted) 55%, transparent);
 }
 .link:hover{ color: var(--fg); }
+
+/* =========================
+   SLIDE MODE
+========================= */
+.slide{
+  position: fixed;
+  inset: 0;
+  display:none;
+  z-index: 180; /* under viewer (200), över allt annat */
+}
+.slide.is-open{ display:block; }
+
+.slide__backdrop{
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,.72);
+}
+
+.slide__panel{
+  position: relative;
+  margin: 14px auto;
+  width: min(1400px, calc(100% - 22px));
+  height: calc(100% - 28px);
+  background: color-mix(in srgb, var(--bg) 92%, black);
+  border: 1px solid var(--border);
+  border-radius: var(--r2);
+  box-shadow: var(--shadow);
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+}
+
+.slide__toolbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap: 10px;
+  padding: 12px 12px;
+  border-bottom:1px solid var(--border);
+  background: color-mix(in srgb, var(--card2) 70%, transparent);
+}
+
+.slide__meta{min-width: 260px}
+.slide__kicker{
+  color: var(--muted);
+  font-weight: 900;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .2px;
+}
+.slide__titleRow{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  margin-top:6px;
+}
+.slide__title{
+  font-weight: 950;
+  font-size: 16px;
+  line-height: 1.15;
+}
+.slide__pill{
+  border:1px solid var(--border);
+  color: var(--muted);
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-weight: 850;
+  font-size: 12px;
+  white-space:nowrap;
+}
+
+.slide__buttons{
+  display:flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content:flex-end;
+  align-items:center;
+}
+
+.slide__body{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  padding: 12px;
+  overflow:auto;
+}
+@media (min-width: 980px){
+  .slide__body{
+    grid-template-columns: 1.1fr .9fr;
+    align-items: start;
+  }
+}
+
+.slide__imageWrap{
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  overflow:hidden;
+  background: radial-gradient(circle at 30% 20%, rgba(255,255,255,.06), transparent 45%);
+  min-height: 260px;
+  cursor: zoom-in;
+}
+.slide__imageWrap img{
+  width: 100%;
+  height: auto;
+  display:block;
+}
+.slide__imgHint{
+  position:absolute;
+  left: 10px;
+  bottom: 10px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  color: var(--muted);
+  background: color-mix(in srgb, var(--bg) 70%, transparent);
+  border: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+}
+
+.slide__content{
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: color-mix(in srgb, var(--card2) 55%, transparent);
+  padding: 14px 14px 10px;
+}
+
+.slide__content .lesson{
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+.slide__content .lesson h3{
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+.slide__content .lesson p{
+  font-size: 14px;
+  line-height: 1.6;
+}
+.slide__content .lesson ul,
+.slide__content .lesson ol{
+  font-size: 14px;
+}
 
 /* =========================
    Viewer / Lightbox
