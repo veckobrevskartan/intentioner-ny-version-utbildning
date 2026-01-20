@@ -27,13 +27,11 @@
       drag: { active:false, x:0, y:0, startTx:0, startTy:0 }
     };
 
-    // helper: reset to "fit"
     function fit(){
       st.scale = 1;
       st.tx = 0;
       st.ty = 0;
       applyImgTransform(img, st);
-      // reset button label
       const reset = btns.find(b => b.dataset.zoom === "reset");
       if (reset) reset.textContent = "100%";
     }
@@ -105,7 +103,8 @@
     });
 
     // open in viewer
-    btnOpen?.addEventListener("click", () => {
+    btnOpen?.addEventListener("click", (e) => {
+      e.stopPropagation();
       openViewer(img.getAttribute("src"), img.getAttribute("alt") || "Bild");
     });
 
@@ -273,7 +272,154 @@
   }
   vFullscreen?.addEventListener("click", toggleFs);
 
-  // Keyboard
+  // expose to module open + slide
+  window.openViewer = openViewer;
+
+  // =========================
+  // SLIDE MODE (module -> fullscreen slide)
+  // =========================
+  const slide = $("#slide");
+  const sPanel = $(".slide__panel");
+  const sClose = $("#sClose");
+  const sPrev = $("#sPrev");
+  const sNext = $("#sNext");
+  const sFullscreen = $("#sFullscreen");
+  const sOpenImage = $("#sOpenImage");
+
+  const sKicker = $("#sKicker");
+  const sTitle = $("#sTitle");
+  const sPill = $("#sPill");
+  const sImg = $("#sImg");
+  const sContent = $("#sContent");
+
+  const slideState = {
+    open: false,
+    idx: -1,
+  };
+
+  function visibleModules(){
+    return modules.filter(m => m.style.display !== "none");
+  }
+
+  function openSlideByIndex(i){
+    const vis = visibleModules();
+    if (!vis.length) return;
+
+    i = clamp(i, 0, vis.length - 1);
+    const mod = vis[i];
+
+    slideState.open = true;
+    slideState.idx = i;
+
+    slide.classList.add("is-open");
+    slide.setAttribute("aria-hidden","false");
+    document.documentElement.style.overflow = "hidden";
+
+    const kickerEl = $(".module__kicker", mod);
+    const titleEl = $(".module__title", mod);
+    const pillEl = $(".module__pill", mod);
+    const imgEl = $("[data-img]", mod);
+    const lessonEl = $(".lesson", mod);
+
+    sKicker.textContent = kickerEl?.textContent?.trim() || "Modul";
+    sTitle.textContent = titleEl?.textContent?.trim() || "Titel";
+    sPill.textContent = pillEl?.textContent?.trim() || "";
+    sPill.style.display = sPill.textContent ? "" : "none";
+
+    const src = imgEl?.getAttribute("src") || "";
+    const alt = imgEl?.getAttribute("alt") || sTitle.textContent;
+
+    sImg.src = src;
+    sImg.alt = alt;
+
+    // inject lesson content (clone)
+    sContent.innerHTML = "";
+    if (lessonEl){
+      const clone = lessonEl.cloneNode(true);
+      sContent.appendChild(clone);
+    } else {
+      const fallback = document.createElement("div");
+      fallback.className = "lesson";
+      fallback.innerHTML = `<h3>Undervisning</h3><p>Ingen undervisningstext hittades för den här modulen.</p>`;
+      sContent.appendChild(fallback);
+    }
+  }
+
+  function closeSlide(){
+    slideState.open = false;
+    slideState.idx = -1;
+    slide.classList.remove("is-open");
+    slide.setAttribute("aria-hidden","true");
+    document.documentElement.style.overflow = "";
+    sImg.src = "";
+    sContent.innerHTML = "";
+    if (document.fullscreenElement) document.exitFullscreen().catch(()=>{});
+  }
+
+  function slidePrev(){
+    const vis = visibleModules();
+    if (!vis.length) return;
+    openSlideByIndex(slideState.idx - 1);
+  }
+
+  function slideNext(){
+    const vis = visibleModules();
+    if (!vis.length) return;
+    openSlideByIndex(slideState.idx + 1);
+  }
+
+  function toggleSlideFs(){
+    if (!sPanel) return;
+    if (!document.fullscreenElement) sPanel.requestFullscreen?.().catch(()=>{});
+    else document.exitFullscreen?.().catch(()=>{});
+  }
+
+  // Click-to-open slide on module (ignore clicks on controls/buttons/inputs)
+  function isInteractiveTarget(t){
+    return !!t.closest("button, a, input, textarea, select, .controls, .viewer, .slide");
+  }
+
+  modules.forEach((mod) => {
+    mod.addEventListener("click", (e) => {
+      if (isInteractiveTarget(e.target)) return;
+      const vis = visibleModules();
+      const i = vis.indexOf(mod);
+      if (i >= 0) openSlideByIndex(i);
+    });
+  });
+
+  // Slide buttons
+  sClose?.addEventListener("click", closeSlide);
+  $$("[data-slide-close]").forEach(el => el.addEventListener("click", closeSlide));
+  sPrev?.addEventListener("click", slidePrev);
+  sNext?.addEventListener("click", slideNext);
+  sFullscreen?.addEventListener("click", toggleSlideFs);
+
+  // Open image in viewer from slide
+  function openSlideImageInViewer(){
+    if (!slideState.open) return;
+    openViewer(sImg.src, sImg.alt || sTitle.textContent || "Bild");
+  }
+  sOpenImage?.addEventListener("click", openSlideImageInViewer);
+  sImg?.addEventListener("click", openSlideImageInViewer);
+
+  // Keyboard for slide + viewer
+  document.addEventListener("keydown", (e) => {
+    // If viewer open, viewer handler below will handle keys (but we keep this clean)
+    if (vState.open) return;
+
+    if (slideState.open){
+      if (e.key === "Escape") { closeSlide(); return; }
+      if (e.key === "ArrowLeft") { slidePrev(); return; }
+      if (e.key === "ArrowRight") { slideNext(); return; }
+      if (e.key.toLowerCase() === "f") { toggleSlideFs(); return; }
+      if (e.key === "Enter") { openSlideImageInViewer(); return; }
+    }
+  });
+
+  // =========================
+  // Viewer keyboard (existing)
+  // =========================
   document.addEventListener("keydown", (e) => {
     if (!vState.open) return;
     if (e.key === "Escape") closeViewer();
@@ -282,9 +428,6 @@
     if (e.key.toLowerCase() === "f") toggleFs();
     if (e.key === "0") vReset();
   });
-
-  // expose to module open
-  window.openViewer = openViewer;
 
   // initial filter state
   applyVisibility();
