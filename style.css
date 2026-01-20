@@ -233,6 +233,46 @@ img{display:block; max-width:none}
   line-height: 1.45;
 }
 
+/* =========================
+   Undervisningsblock
+========================= */
+.lesson{
+  margin: 0 14px 14px;
+  padding: 12px 12px 12px;
+  border: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+  background: color-mix(in srgb, var(--card2) 55%, transparent);
+  border-radius: 16px;
+}
+.lesson h3{
+  margin: 0 0 6px 0;
+  font-size: 14px;
+  font-weight: 950;
+  letter-spacing: .2px;
+}
+.lesson h4{
+  margin: 12px 0 6px 0;
+  font-size: 13px;
+  font-weight: 900;
+  color: color-mix(in srgb, var(--fg) 88%, var(--muted));
+}
+.lesson p{
+  margin: 0 0 10px 0;
+  color: color-mix(in srgb, var(--fg) 90%, var(--muted));
+  font-size: 13px;
+  line-height: 1.55;
+  max-width: 80ch;
+}
+.lesson ul,
+.lesson ol{
+  margin: 0 0 8px 18px;
+  padding: 0;
+  color: color-mix(in srgb, var(--fg) 90%, var(--muted));
+  font-size: 13px;
+  line-height: 1.5;
+}
+.lesson li{ margin: 0 0 6px 0; }
+.lesson em{ font-style: italic; }
+
 .footer{
   padding: 20px 0 44px;
 }
@@ -264,7 +304,7 @@ img{display:block; max-width:none}
 .viewer__backdrop{
   position:absolute;
   inset:0;
-  background: rgba(0,0,0,.72);
+  background: rgba(0,0,0,72);
 }
 .viewer__panel{
   position: relative;
@@ -308,7 +348,7 @@ img{display:block; max-width:none}
   flex: 1;
   overflow:hidden;
   cursor: grab;
-  background: radial-gradient(circle at 30% 20%, rgba(255,255,255,.06), transparent 45%);
+  background: radial-gradient(circle at 30% 20%, rgba(255,255,255,06), transparent 45%);
 }
 .viewer__stage:active{ cursor: grabbing; }
 .viewer__stage img{
